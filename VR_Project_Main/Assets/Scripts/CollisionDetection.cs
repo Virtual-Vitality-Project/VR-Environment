@@ -35,7 +35,7 @@ public class CollisionDetection : MonoBehaviour
         }
     }
 
-    private void OpenDoor()
+    public void OpenDoor()
     {
         // Set the flag indicating that the door is open
         isOpen = true;
