@@ -1,7 +1,8 @@
 Library
 Temp
 Logs
-obj
+obj/*
 .vs
 .vsconfig
 UserSettings
+/VR_Project_Main/obj/Debug
