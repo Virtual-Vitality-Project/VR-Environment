@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B682F405-4026-622F-21C2-D276B4E4BC39}</ProjectGuid>
+    <ProjectGuid>{99D957C4-ACCF-3B7D-C2AA-96DA0828C0CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -69,13 +69,13 @@
     <Compile Include="Assets\GlobalVariableStorage.cs" />
     <Compile Include="Assets\UnityTechnologies\ParticlePack\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\Scripts\AnimateHandOnInput.cs" />
-    <Compile Include="Assets\Scripts\VibrationManager.cs" />
     <Compile Include="Assets\Scripts\LevelEndColliderCheck.cs" />
     <Compile Include="Assets\Scripts\DisableCursor.cs" />
     <Compile Include="Assets\FinalSceneManager.cs" />
     <Compile Include="Assets\Scripts\ActivateTeleportationRay.cs" />
     <Compile Include="Assets\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\HMDInfoManager.cs" />
+    <Compile Include="Assets\VibrationManager.cs" />
     <Compile Include="Assets\Scripts\FireBulletOnActivate.cs" />
     <Compile Include="Assets\ConstantRotation.cs" />
     <Compile Include="Assets\Scripts\ProjectileGun.cs" />
@@ -1190,15 +1190,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj">
-      <Project>{98CA2E1D-58F1-77AD-80B3-D73CE2F26A35}</Project>
+      <Project>{F57BD252-E196-1A9F-23F7-9002780E623A}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj">
-      <Project>{33B921F2-2ED4-06B5-9D34-F365527B92D8}</Project>
+      <Project>{D763CC07-D5D9-8BCB-605F-0863AE8561E6}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj">
-      <Project>{E49CA69F-F518-4632-0442-2690572F65A4}</Project>
+      <Project>{F61C5A47-F12B-5606-DA1C-95A98E003189}</Project>
       <Name>Unity.XR.Interaction.Toolkit.Samples.StarterAssets</Name>
     </ProjectReference>
   </ItemGroup>
