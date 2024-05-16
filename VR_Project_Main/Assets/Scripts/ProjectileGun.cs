@@ -108,8 +108,9 @@ public class ProjectileGun : MonoBehaviour
         else shooting = isFiringPressed;
 
         // Reloading
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && reloadCollider != null && reloadObject != null && reloadObject.activeInHierarchy) Reload();
-        
+        if (bulletsLeft < magazineSize && !reloading && reloadCollider != null && reloadObject != null && reloadObject.activeInHierarchy) reloadObject.SetActive(false);
+
+
         // Reload automatically when trying to shoot without ammo
         if (readyToShoot && shooting && !reloading && bulletsLeft <= 0) Reload();
 
@@ -120,6 +121,15 @@ public class ProjectileGun : MonoBehaviour
             Shoot();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == reloadObject && bulletsLeft < magazineSize && !reloading)
+        {
+            Reload();
+        }
+    }
+
 
     private void Shoot()
     {

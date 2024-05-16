@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: 53e0d6b83d227834fbb534d581fe9b2d
+  - enabled: 1
+    path: Assets/Scenes/SituationSelectionHub.unity
+    guid: 96401942a7de348408ea9892e7210e4a
+  - enabled: 1
+    path: Assets/Scenes/StudentLogin.unity
+    guid: 9df8585b9ea62434aa6d05785e9c7d1e
+  - enabled: 1
     path: Assets/Scenes/MyScene.unity
     guid: bdb14f0a0c24de942818667c3eac469d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Final Scene.unity
     guid: 905b0fa1417f98741b0c2922bdaf34a5
   m_configObjects:

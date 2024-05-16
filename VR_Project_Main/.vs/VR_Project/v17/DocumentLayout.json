@@ -1,42 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Unity\\VR_Project\\",
+  "WorkspaceRootPath": "D:\\Programming\\VR-Environment\\VR_Project_Main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|d:\\unity\\vr_project\\assets\\scripts\\projectilegun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectilegun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B682F405-4026-622F-21C2-D276B4E4BC39}|Assembly-CSharp.csproj|d:\\programming\\vr-environment\\vr_project_main\\assets\\scripts\\projectilegun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B682F405-4026-622F-21C2-D276B4E4BC39}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectilegun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|d:\\unity\\vr_project\\assets\\firebulletonactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|solutionrelative:assets\\firebulletonactivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity\\VR_Project\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|D:\\Unity\\VR_Project\\assets\\vibrationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|solutionrelative:assets\\vibrationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programming\\VR-Environment\\VR_Project_Main\\assets\\vibrationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\vibrationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|D:\\Unity\\VR_Project\\assets\\collisiondetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|solutionrelative:assets\\collisiondetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programming\\VR-Environment\\VR_Project_Main\\assets\\disablecursor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\disablecursor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|D:\\Unity\\VR_Project\\assets\\hmdinfomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|solutionrelative:assets\\hmdinfomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programming\\VR-Environment\\VR_Project_Main\\assets\\hmdinfomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\hmdinfomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|D:\\Unity\\VR_Project\\assets\\disablecursor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|solutionrelative:assets\\disablecursor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programming\\VR-Environment\\VR_Project_Main\\assets\\collisiondetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\collisiondetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity\\VR_Project\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{B682F405-4026-622F-21C2-D276B4E4BC39}|Assembly-CSharp.csproj|D:\\Programming\\VR-Environment\\VR_Project_Main\\assets\\scripts\\activateteleportationray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B682F405-4026-622F-21C2-D276B4E4BC39}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\activateteleportationray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|D:\\Unity\\VR_Project\\assets\\scripts\\activateteleportationray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\activateteleportationray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programming\\VR-Environment\\VR_Project_Main\\assets\\animatehandoninput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\animatehandoninput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|D:\\Unity\\VR_Project\\assets\\animatehandoninput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FCA7CE5D-11FB-AA44-0260-7B4EDF71D305}|Assembly-CSharp.csproj|solutionrelative:assets\\animatehandoninput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\FireBulletOnActivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\FireBulletOnActivate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -52,9 +51,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "VibrationManager.cs",
-              "DocumentMoniker": "D:\\Unity\\VR_Project\\Assets\\VibrationManager.cs",
+              "DocumentMoniker": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\VibrationManager.cs",
               "RelativeDocumentMoniker": "Assets\\VibrationManager.cs",
-              "ToolTip": "D:\\Unity\\VR_Project\\Assets\\VibrationManager.cs",
+              "ToolTip": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\VibrationManager.cs",
               "RelativeToolTip": "Assets\\VibrationManager.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -64,22 +63,22 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ProjectileGun.cs",
-              "DocumentMoniker": "D:\\Unity\\VR_Project\\Assets\\Scripts\\ProjectileGun.cs",
+              "DocumentMoniker": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\Scripts\\ProjectileGun.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ProjectileGun.cs",
-              "ToolTip": "D:\\Unity\\VR_Project\\Assets\\Scripts\\ProjectileGun.cs",
+              "ToolTip": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\Scripts\\ProjectileGun.cs",
               "RelativeToolTip": "Assets\\Scripts\\ProjectileGun.cs",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAawH0AAAAuAAAA",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAawH0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T09:32:04.954Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "DisableCursor.cs",
-              "DocumentMoniker": "D:\\Unity\\VR_Project\\Assets\\DisableCursor.cs",
+              "DocumentMoniker": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\DisableCursor.cs",
               "RelativeDocumentMoniker": "Assets\\DisableCursor.cs",
-              "ToolTip": "D:\\Unity\\VR_Project\\Assets\\DisableCursor.cs",
+              "ToolTip": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\DisableCursor.cs",
               "RelativeToolTip": "Assets\\DisableCursor.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAowAsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -89,9 +88,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "HMDInfoManager.cs",
-              "DocumentMoniker": "D:\\Unity\\VR_Project\\Assets\\HMDInfoManager.cs",
+              "DocumentMoniker": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\HMDInfoManager.cs",
               "RelativeDocumentMoniker": "Assets\\HMDInfoManager.cs",
-              "ToolTip": "D:\\Unity\\VR_Project\\Assets\\HMDInfoManager.cs",
+              "ToolTip": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\HMDInfoManager.cs",
               "RelativeToolTip": "Assets\\HMDInfoManager.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -99,11 +98,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "CollisionDetection.cs",
-              "DocumentMoniker": "D:\\Unity\\VR_Project\\Assets\\CollisionDetection.cs",
+              "DocumentMoniker": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\CollisionDetection.cs",
               "RelativeDocumentMoniker": "Assets\\CollisionDetection.cs",
-              "ToolTip": "D:\\Unity\\VR_Project\\Assets\\CollisionDetection.cs",
+              "ToolTip": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\CollisionDetection.cs",
               "RelativeToolTip": "Assets\\CollisionDetection.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -111,11 +110,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "ActivateTeleportationRay.cs",
-              "DocumentMoniker": "D:\\Unity\\VR_Project\\Assets\\Scripts\\ActivateTeleportationRay.cs",
+              "DocumentMoniker": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\Scripts\\ActivateTeleportationRay.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ActivateTeleportationRay.cs",
-              "ToolTip": "D:\\Unity\\VR_Project\\Assets\\Scripts\\ActivateTeleportationRay.cs",
+              "ToolTip": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\Scripts\\ActivateTeleportationRay.cs",
               "RelativeToolTip": "Assets\\Scripts\\ActivateTeleportationRay.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -123,11 +122,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "AnimateHandOnInput.cs",
-              "DocumentMoniker": "D:\\Unity\\VR_Project\\Assets\\AnimateHandOnInput.cs",
+              "DocumentMoniker": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\AnimateHandOnInput.cs",
               "RelativeDocumentMoniker": "Assets\\AnimateHandOnInput.cs",
-              "ToolTip": "D:\\Unity\\VR_Project\\Assets\\AnimateHandOnInput.cs",
+              "ToolTip": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\AnimateHandOnInput.cs",
               "RelativeToolTip": "Assets\\AnimateHandOnInput.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -135,12 +134,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Lit.shader",
               "DocumentMoniker": "D:\\Unity\\VR_Project\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader",
-              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader",
+              "RelativeDocumentMoniker": "..\\..\\..\\Unity\\VR_Project\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader",
               "ToolTip": "D:\\Unity\\VR_Project\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader",
-              "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader",
+              "RelativeToolTip": "..\\..\\..\\Unity\\VR_Project\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.10\\Shaders\\Lit.shader",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
               "WhenOpened": "2024-03-13T10:09:55.072Z"
@@ -153,11 +152,11 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "FireBulletOnActivate.cs",
-              "DocumentMoniker": "D:\\Unity\\VR_Project\\Assets\\FireBulletOnActivate.cs",
+              "DocumentMoniker": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\FireBulletOnActivate.cs",
               "RelativeDocumentMoniker": "Assets\\FireBulletOnActivate.cs",
-              "ToolTip": "D:\\Unity\\VR_Project\\Assets\\FireBulletOnActivate.cs",
+              "ToolTip": "D:\\Programming\\VR-Environment\\VR_Project_Main\\Assets\\FireBulletOnActivate.cs",
               "RelativeToolTip": "Assets\\FireBulletOnActivate.cs",
               "ViewState": "AQIAACgAAAAAAAAAAAAAAEEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
