@@ -1,1 +1,1 @@
-Kyliano, Dimitree and Valerii
+Dimitree and Valerii
