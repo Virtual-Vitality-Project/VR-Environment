@@ -1,4 +1,4 @@
-# VR Environment made in Unity
+# VR Environment
 
 Welcome to the VR Environment project, a cutting-edge virtual reality experience built using Unity.
 This repository contains the complete source code and assets for the VR environment, developed with the goal of providing an immersive and interactive VR experience.
