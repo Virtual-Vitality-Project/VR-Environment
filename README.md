@@ -18,8 +18,9 @@ To get started with this project, follow these steps:
    git clone https://github.com/Virtual-Vitality-Project/VR-Environment
    ```
 2. **Open the project in Unity:**
-   - Make sure you have Unity installed. You can download it from the [Unity website](https://unity.com/).
-   - Open Unity Hub, click on "Open," and select the cloned project directory.
+   - Make sure you have Unity installed. You can download it from the [Unity website](https://unity.com/download).
+   - Open Unity Hub, download Unity 2022.3.21f1
+   - Go to "Projects" tab, click on "Add" -> "Add project from disk" and select the cloned project directory (VR_Project_Main).
 
 3. **Build and Run:**
    - Configure your build settings for the target VR platform.
