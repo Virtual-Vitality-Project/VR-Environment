@@ -29,12 +29,12 @@ To get started with this project, follow these steps:
 
 This project was developed by:
 
-- **Valerii Kozhevets**
-- **Dimitry de Hoop**
+- [**Valerii Kozhevets**](https://github.com/ValeraZSD)
+- [**Dimitry de Hoop**](https://github.com/dimitry22sd)
 
 Honorable mention for the **LoginAPI** implementation by:
 
-- **Wieger Jacobs**
+- [**Wieger Jacobs**](https://github.com/wwwqr-000)
 
 ## Contributing
 
