@@ -46,7 +46,7 @@ public class Login : MonoBehaviour
         }
         else if (loginResult == 3)
         {//LoginAPI not active or endpoint url incorrect. (Offline)
-            DisplayError("LoginAPI not reachable or offline.\n");
+            DisplayError("LoginAPI is not reachable or offline.\n");
         }
         else if (LoginAPIResponse.Error.Active == "false" && LoginAPIResponse.Error.Stat == "ok" && LoginAPIResponse.Data.Is_valid_login == "true")
         {
@@ -89,7 +89,6 @@ public class Login : MonoBehaviour
 
 
 ///////////////////////////////////
-///
 
 public class LoginAPI
 {
