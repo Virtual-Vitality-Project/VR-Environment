@@ -1,0 +1,19 @@
+name: security-checker
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:  
+  wwwqr_sec_check_job:
+    runs-on: ubuntu-latest
+    name: Looking for unsave code
+    steps:
+      - uses: actions/checkout@v4
+      - id: wwwqr
+        uses: Virtual-Vitality-Project/composite-wwwqr-sec-check@v1.1-release
+        with:
+          whitelist: 'whitelist.ini'
+          checker: v1.1-release
