@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scenes\StudentLogin.cs" />
+    <Compile Include="Assets\QuestionShelf.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Keypad\Scripts\Keypad.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\Keypad\Scripts\KeypadButton.cs" />
     <Compile Include="Assets\Scripts\LevelEndColliderCheck.cs" />
     <Compile Include="Assets\Scripts\DisableCursor.cs" />
+    <Compile Include="Assets\SafeResetPlayer.cs" />
     <Compile Include="Assets\FinalSceneManager.cs" />
     <Compile Include="Assets\Scripts\ActivateTeleportationRay.cs" />
     <Compile Include="Assets\ButtonManager.cs" />
@@ -1163,12 +1165,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.State.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Mathematics">
