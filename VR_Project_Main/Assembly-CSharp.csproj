@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\ProjectileGun.cs" />
     <Compile Include="Assets\SituationSelectionManager.cs" />
     <Compile Include="Assets\Scripts\ParsingJSON.cs" />
+    <Compile Include="Assets\Scripts\VRButton.cs" />
     <Compile Include="Assets\Scripts\CollisionDetection.cs" />
     <Compile Include="Assets\SceneLoader.cs" />
     <Compile Include="Assets\Scenes\Login.cs" />
