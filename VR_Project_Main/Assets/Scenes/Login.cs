@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Collections.Generic;
 
 public class Login : MonoBehaviour
 {
@@ -15,10 +16,17 @@ public class Login : MonoBehaviour
     public TMP_InputField passwordInput;
     public TMP_Text errorOutput;
     public Button loginButton;
-    public Button exitButton;
+    public Button exitButton;  
+
+    // private BeheersysteemMethods beheerMethode;
 
     void Start()
     {
+
+        // beheerMethode = new BeheersysteemMethods("00080E2255A4CDC4210DCC5AABB574CCoi2hro32j@#I$o32h432n");
+        // String enc = beheerMethode.Encrypt("http://192.168.1.3:80");
+        // Debug.Log("<start>"+ enc + "<end>");
+
         loginButton.onClick.AddListener(login);
         exitButton.onClick.AddListener(Exit);
     }
