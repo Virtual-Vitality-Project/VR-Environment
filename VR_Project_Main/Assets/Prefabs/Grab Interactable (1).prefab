@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1700661264295809174}
   - component: {fileID: 2494650876318344233}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Text (number)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A
+  m_text: D
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 5166212297200350860}
   m_Layer: 0
   m_Name: Grab Interactable (1)
-  m_TagString: Untagged
+  m_TagString: Answer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -467,12 +467,12 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 734488445944656666}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
-  m_AttachEaseInTime: 0.15
+  m_AttachEaseInTime: 1
   m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -527,11 +527,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e486f8ce1b48c1441baac7d803676bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedObjects: []
+  allowedObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   teleportEffectBefore: {fileID: 198175801688348628, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
     type: 3}
   teleportEffectAfter: {fileID: 198856239026640498, guid: 9bba9cf244c53c5439505dfc96fdd11c,
     type: 3}
+  moveDuration: 1
 --- !u!1 &4266781505268980016
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +549,7 @@ GameObject:
   - component: {fileID: 1169127564029756029}
   - component: {fileID: 7351027677754806054}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: Text (answer)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Heart '
+  m_text: Brain
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
