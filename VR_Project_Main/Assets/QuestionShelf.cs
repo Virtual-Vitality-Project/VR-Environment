@@ -46,8 +46,7 @@ public class QuestionShelf : MonoBehaviour
         for (int i = 1; i < questionsAndAnswers.Count; i++)
         {
             Vector3 newPosition = KofferShelf_floor_shelf_prefab.transform.position + new Vector3(0, yOffset * i, 0);
-            GameObject newShelf = Instantiate(KofferShelf_floor_shelf_prefab, newPosition, Quaternion.identity, KofferShelf_floor_shelf_prefab.transform);
-            newShelf.transform.SetParent(KofferShelf_floor_shelf_prefab.transform);
+            GameObject newShelf = Instantiate(KofferShelf_floor_shelf_prefab, newPosition, Quaternion.identity, kofferShelf.transform);
             shelfInstances.Add(newShelf);
         }
     }
