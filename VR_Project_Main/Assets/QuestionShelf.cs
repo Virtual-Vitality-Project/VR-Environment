@@ -7,6 +7,7 @@ using System.Linq;
 public class QuestionShelf : MonoBehaviour
 {
     public GameObject KofferShelf_floor_shelf_prefab; // Object for each floor to create vertical elevator
+    public GameObject KofferShelf_floor_shelf_top;
     public GameObject Grab_Interactable_prefab; // Prefab object for each answer
     public TextMeshPro textQuestion; // set to current question string .text
     public GameObject kofferShelf;
@@ -16,6 +17,7 @@ public class QuestionShelf : MonoBehaviour
     public List<GameObject> spawnedObjects;
 
     public float yOffset = 0.5f;
+    private int previousQuestion = 1;
     private int currentQuestion = 0; // Start from the first question
     private List<GameObject> shelfInstances = new List<GameObject>();
 
@@ -25,7 +27,6 @@ public class QuestionShelf : MonoBehaviour
         {"Which animal says 'meow'?", (new List<string>{"Dog", "Cat", "Cow", "Bird"}, 1)},
         {"What color is the sky?", (new List<string>{"Purple", "Blue", "Gray", "White"}, 1)},
         {"What is the capital of France?", (new List<string>{"London", "Madrid", "Paris", "\"F\""}, 2)},
-     
     };
 
     void Start()
@@ -45,10 +46,27 @@ public class QuestionShelf : MonoBehaviour
         // Create copies for each question
         for (int i = 1; i < questionsAndAnswers.Count; i++)
         {
-            Vector3 newPosition = KofferShelf_floor_shelf_prefab.transform.position + new Vector3(0, yOffset * i, 0);
-            GameObject newShelf = Instantiate(KofferShelf_floor_shelf_prefab, newPosition, Quaternion.Euler(0, 180, 0), kofferShelf.transform);
+            GameObject newShelf = Instantiate(KofferShelf_floor_shelf_prefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0), kofferShelf.transform);
+            newShelf.transform.localPosition = new Vector3(1.404f, yOffset * i, 0.392f);
+
+            // Set the text for "Text (Answer)"
+            TextMeshPro answerText = newShelf.transform.Find("Text (Answer)").GetComponent<TextMeshPro>();
+            answerText.text = $"Answer number {i}";
+
+            // Adjust the size of "Shelf_cover"
+            Transform shelfCover = newShelf.transform.Find("Shelf_cover");
+            shelfCover.localScale = Vector3.one;
+
             shelfInstances.Add(newShelf);
         }
+
+        // Set the text for the first shelf's "Text (Answer)"
+        TextMeshPro firstShelfAnswerText = KofferShelf_floor_shelf_prefab.transform.Find("Text (Answer)").GetComponent<TextMeshPro>();
+        firstShelfAnswerText.text = "Answer number 0";
+
+        // Adjust the size of "Shelf_cover" for the first shelf
+        Transform firstShelfCover = KofferShelf_floor_shelf_prefab.transform.Find("Shelf_cover");
+        firstShelfCover.localScale = Vector3.one;
     }
 
     void DisplayQuestionAndAnswers()
@@ -57,7 +75,7 @@ public class QuestionShelf : MonoBehaviour
         string question = questionsAndAnswers.Keys.ElementAt(currentQuestion);
 
         // Display the question
-        textQuestion.text = (currentQuestion + 1).ToString() +". "+ question;
+        textQuestion.text = (currentQuestion + 1).ToString() + ". " + question;
         textCurrentQuestion.text = (currentQuestion + 1).ToString() + " / " + questionsAndAnswers.Count;
 
         // Destroy existing answer objects if any
@@ -80,23 +98,74 @@ public class QuestionShelf : MonoBehaviour
 
     IEnumerator MoveShelvesCoroutine()
     {
-        float targetYPosition = -yOffset * currentQuestion;
-        float duration = 0.5f;
+        float targetYPosition = yOffset * currentQuestion - 0.55f;
+
+        // Calculate the number of questions scrolled
+        int questionsScrolled = Mathf.Abs(currentQuestion - previousQuestion);
+
+        // Adjust the duration based on the number of questions scrolled
+        float duration = 0.5f * questionsScrolled;
+
         float elapsedTime = 0f;
-        Vector3[] startPositions = shelfInstances.Select(shelf => shelf.transform.position).ToArray();
+        Vector3[] startPositions = shelfInstances.Select(shelf => shelf.transform.localPosition).ToArray();
+
+        // Get the initial position of the top shelf
+        Vector3 topStartPosition = KofferShelf_floor_shelf_top.transform.localPosition;
 
         while (elapsedTime < duration)
         {
             float t = elapsedTime / duration;
+            float smoothStep = t * t * (3f - 2f * t);
+
+            // Calculate the target position for the top shelf
+            Vector3 topTargetPosition = new Vector3(topStartPosition.x, targetYPosition, topStartPosition.z);
+            KofferShelf_floor_shelf_top.transform.localPosition = Vector3.Lerp(topStartPosition, topTargetPosition, smoothStep);
+
             for (int i = 0; i < shelfInstances.Count; i++)
             {
-                shelfInstances[i].transform.position = Vector3.Lerp(startPositions[i], new Vector3(0, targetYPosition - yOffset * i, 0), t);
+                shelfInstances[i].transform.localPosition = Vector3.Lerp(startPositions[i], new Vector3(startPositions[i].x, targetYPosition - yOffset * i, startPositions[i].z), smoothStep);
+
+                Transform shelfCover = shelfInstances[i].transform.Find("Shelf_cover");
+                if (i == currentQuestion)
+                {
+                    shelfCover.localScale = Vector3.Lerp(shelfCover.localScale, new Vector3(1, 0.3f, 1), smoothStep);
+                    shelfCover.localRotation = Quaternion.Lerp(shelfCover.localRotation, Quaternion.Euler(90f, 0f, 0f), smoothStep);
+
+                }
+                else
+                {
+                    shelfCover.localScale = Vector3.Lerp(shelfCover.localScale, Vector3.one, smoothStep);
+                    shelfCover.localRotation = Quaternion.Lerp(shelfCover.localRotation, Quaternion.Euler(0f, 0f, 0f), smoothStep);
+                }
             }
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        // Ensure the final position and size are set correctly
+        for (int i = 0; i < shelfInstances.Count; i++)
+        {
+            shelfInstances[i].transform.localPosition = new Vector3(startPositions[i].x, targetYPosition - yOffset * i, startPositions[i].z);
+
+            Transform shelfCover = shelfInstances[i].transform.Find("Shelf_cover");
+            if (i == currentQuestion)
+            {
+                shelfCover.localScale = new Vector3(1, 0.3f, 1);
+                shelfCover.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            }
+            else
+            {
+                shelfCover.localScale = Vector3.one;
+                shelfCover.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+        }
+
+        // Update the previous question index
+        previousQuestion = currentQuestion;
     }
+
+
 
     // Configurable size parameters
     public float minSize = 0.12f;
