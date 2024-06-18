@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
 using Unity.Mathematics;
+using TMPro;
+using System.Net;
 
 // Root myDeserializedClass = JsonConvert.DeserializeObject<List<Root>>(myJsonResponse);
 public class Eigenschap
@@ -95,11 +97,39 @@ public class ParsingJSON : MonoBehaviour
     public string email = "test@gmail.com";
     public string password = "wachtwoord123";
     public int SceneID = 25;
+    public TextMeshProUGUI textError;
     public GameObject[] cubePrefabs; // Array van prefabs voor de kubussen
 
+    private void DisplayWarning(string errorMsg)
+    {
+        Debug.LogWarning(errorMsg);
+        textError.text += errorMsg;
+        ChangeVertexColor(textError, Color.yellow);
+    }
+
+    private void DisplayError(string errorMsg)
+    {
+        Debug.LogError(errorMsg);
+        textError.text += errorMsg;
+        ChangeVertexColor(textError, Color.red);
+    }
+
+    private void DisplayErrorClear()
+    {
+        Debug.Log("Cleared the error message");
+        textError.text = "";
+    }
+
+    void ChangeVertexColor(TextMeshProUGUI element, Color newColor)
+    {
+        TextMeshProUGUI textMeshPro = element.GetComponent<TextMeshProUGUI>();
+        textMeshPro.color = newColor;
+
+    }
 
     IEnumerator Start()
     {
+        textError.text = "";
         string auth = email + ":" + password;
         string authEncoded = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(auth));
         string authHeader = "Basic " + authEncoded;
@@ -113,7 +143,7 @@ public class ParsingJSON : MonoBehaviour
 
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError("Web request error: " + webRequest.error);
+                DisplayError("Web request error: " + webRequest.error);
             }
             else
             {
@@ -130,7 +160,7 @@ public class ParsingJSON : MonoBehaviour
 
                         if (prefabToSpawn == null)
                         {
-                            Debug.LogError("Prefab not found at path: " + prefabPath);
+                            DisplayError("Prefab not found at path: " + prefabPath);
                             continue; // Ga door naar het volgende item als prefab niet is gevonden
                         }
 
@@ -162,12 +192,12 @@ public class ParsingJSON : MonoBehaviour
                             }
                             else
                             {
-                                Debug.LogWarning(item.prefab.naam + "Does not have a Renderer component to apply the material.");
+                                DisplayWarning(item.prefab.naam + "Does not have a Renderer component to apply the material.");
                             }
                         }
                         else
                         {
-                            Debug.LogWarning("Material not found with name: " + item.materiaal.naam);
+                            DisplayWarning("Material not found with name: " + item.materiaal.naam);
                         }
 
                         // Toewijzen van scripts
@@ -181,7 +211,7 @@ public class ParsingJSON : MonoBehaviour
                             }
                             else
                             {
-                                Debug.LogWarning("Script not found at path: " + scriptPath);
+                                DisplayWarning("Script not found at path: " + scriptPath);
                             }
                         }
                     }
@@ -202,7 +232,7 @@ public class ParsingJSON : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Invalid RGBA string: " + rgbaString);
+            DisplayWarning("Invalid RGBA string: " + rgbaString);
             return Color.white; // Standaardkleur als de string ongeldig is
         }
     }

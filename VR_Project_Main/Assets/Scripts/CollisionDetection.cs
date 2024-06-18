@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
@@ -13,25 +14,38 @@ public class CollisionDetection : MonoBehaviour
     private bool isOpen = false; // Flag to track if the door is open
     private Coroutine doorMovementCoroutine; // Reference to the door movement coroutine
 
+    private int objectsInsideCount = 0; // Counter to track how many objects are inside the trigger zone
+
+    private static QuestionShelf questionShelfInstance;
+
+    private void Start()
+    {
+        // Ensure you have a reference to the QuestionShelf instance
+        questionShelfInstance = FindObjectOfType<QuestionShelf>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other + " entered the trigger");
-        // Check if the object entering the zone matches the required object
-        if (other.gameObject == requiredObject && !isOpen)
+        if (other.CompareTag("Answer"))
         {
-            // Open the door
-            OpenDoor();
+            objectsInsideCount++; // Increment the count of objects inside
+
+            int answerIndex = int.Parse(other.transform.Find("Text (number)").GetComponent<TextMeshPro>().text) - 1;
+            Debug.Log("answerIndex = " + answerIndex);
+
+            questionShelfInstance.AnswerTriggeredEnter(objectsInsideCount, answerIndex);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log(other + " exited the trigger");
-        // Check if the object exiting the zone matches the required object
-        if (other.gameObject == requiredObject && isOpen)
+        if (other.CompareTag("Answer"))
         {
-            // Close the door
-            CloseDoor();
+            objectsInsideCount--; // Decrement the count of objects inside
+
+            questionShelfInstance.AnswerTriggeredExit(objectsInsideCount);
         }
     }
 
@@ -39,6 +53,7 @@ public class CollisionDetection : MonoBehaviour
     {
         // Set the flag indicating that the door is open
         isOpen = true;
+        Debug.Log("Door is open: " + isOpen);
 
         // Play the sound
         sound.Play();
@@ -57,6 +72,7 @@ public class CollisionDetection : MonoBehaviour
     {
         // Set the flag indicating that the door is closed
         isOpen = false;
+        Debug.Log("Door is closed");
 
         // Play the sound
         sound.Play();

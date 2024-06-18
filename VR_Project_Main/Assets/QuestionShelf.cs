@@ -11,7 +11,9 @@ public class QuestionShelf : MonoBehaviour
     public GameObject Grab_Interactable_prefab; // Prefab object for each answer
     public TextMeshPro textQuestion; // set to current question string .text
     public GameObject kofferShelf;
+    public GameObject collisionDetector;
     public TextMeshPro textCurrentQuestion;
+    public TextMeshProUGUI textDebug;
 
     public List<GameObject> allowedObjectsList;
     public List<GameObject> spawnedObjects;
@@ -19,7 +21,10 @@ public class QuestionShelf : MonoBehaviour
     public float yOffset = 0.5f;
     private int previousQuestion = 1;
     private int currentQuestion = 0; // Start from the first question
+    private int amountOfObjectInsideTrigger = 0;
     private List<GameObject> shelfInstances = new List<GameObject>();
+
+    
 
     private Dictionary<string, (List<string> answers, int correctIndex)> questionsAndAnswers = new Dictionary<string, (List<string>, int)>()
     {
@@ -28,6 +33,8 @@ public class QuestionShelf : MonoBehaviour
         {"What color is the sky?", (new List<string>{"Purple", "Blue", "Gray", "White"}, 1)},
         {"What is the capital of France?", (new List<string>{"London", "Madrid", "Paris", "\"F\""}, 2)},
     };
+
+    private Dictionary<int, int> selectedAnswers = new Dictionary<int, int>();
 
     void Start()
     {
@@ -51,7 +58,7 @@ public class QuestionShelf : MonoBehaviour
 
             // Set the text for "Text (Answer)"
             TextMeshPro answerText = newShelf.transform.Find("Text (Answer)").GetComponent<TextMeshPro>();
-            answerText.text = $"Answer number {i}";
+            answerText.text = questionsAndAnswers.Keys.ElementAt(i);
 
             // Adjust the size of "Shelf_cover"
             Transform shelfCover = newShelf.transform.Find("Shelf_cover");
@@ -62,7 +69,7 @@ public class QuestionShelf : MonoBehaviour
 
         // Set the text for the first shelf's "Text (Answer)"
         TextMeshPro firstShelfAnswerText = KofferShelf_floor_shelf_prefab.transform.Find("Text (Answer)").GetComponent<TextMeshPro>();
-        firstShelfAnswerText.text = "Answer number 0";
+        firstShelfAnswerText.text = questionsAndAnswers.Keys.ElementAt(0);
 
         // Adjust the size of "Shelf_cover" for the first shelf
         Transform firstShelfCover = KofferShelf_floor_shelf_prefab.transform.Find("Shelf_cover");
@@ -165,8 +172,6 @@ public class QuestionShelf : MonoBehaviour
         previousQuestion = currentQuestion;
     }
 
-
-
     // Configurable size parameters
     public float minSize = 0.12f;
     public float maxSize = 0.2f;
@@ -223,6 +228,18 @@ public class QuestionShelf : MonoBehaviour
                 kofferReturnComponent.allowedObjects.AddRange(spawnedAnswerObjects);
             }
         }
+
+        // Check if there was a previously selected answer for the current question
+        if (selectedAnswers.ContainsKey(currentQuestion))
+        {
+            int selectedAnswerIndex = selectedAnswers[currentQuestion];
+            Debug.Log("Found selectedAnswerIndex for this question: " + selectedAnswerIndex);
+            GameObject selectedAnswer = spawnedAnswerObjects[selectedAnswerIndex];
+            // Move the selected answer to the collisionDetector position
+            selectedAnswer.transform.SetParent(collisionDetector.transform);
+            selectedAnswer.transform.localPosition = new Vector3(0, 0.2f, 0);
+            selectedAnswer.transform.SetParent(kofferShelf.transform);
+        }
     }
 
     // Function to destroy existing answer objects
@@ -236,6 +253,20 @@ public class QuestionShelf : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+    }
+
+    public void AnswerTriggeredEnter(int objectsInsideCount, int answerIndex)
+    {
+        amountOfObjectInsideTrigger = objectsInsideCount;
+        selectedAnswers[currentQuestion] = answerIndex;
+        textDebug.text = "Amount: " + amountOfObjectInsideTrigger + "\n currentQuestion answer:" + selectedAnswers[currentQuestion];
+    }
+
+    public void AnswerTriggeredExit(int objectsInsideCount)
+    {
+        amountOfObjectInsideTrigger = objectsInsideCount;
+        selectedAnswers[currentQuestion] = -1;
+        textDebug.text = "Amount: " + amountOfObjectInsideTrigger + "\n currentQuestion answer:" + selectedAnswers[currentQuestion];
     }
 
     public void TopButtonClicked()
