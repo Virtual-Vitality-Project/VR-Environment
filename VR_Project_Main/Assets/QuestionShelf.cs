@@ -26,7 +26,7 @@ public class QuestionShelf : MonoBehaviour
 
 
 
-    private Dictionary<string, (List<string> answers, int correctIndex)> questionsAndAnswers = new Dictionary<string, (List<string>, int)>()
+    public Dictionary<string, (List<string> answers, int correctIndex)> questionsAndAnswers = new Dictionary<string, (List<string>, int)>()
     {
         {"What color is an apple?", (new List<string>{"Red", "Green", "Yellow", "Purple"}, 0)},
         {"Which animal says 'meow'?", (new List<string>{"Dog", "Cat", "Cow", "Bird"}, 1)},
@@ -34,7 +34,7 @@ public class QuestionShelf : MonoBehaviour
         {"What is the capital of France?", (new List<string>{"London", "Madrid", "Paris", "\"F\""}, 2)},
     };
 
-    private Dictionary<int, int> selectedAnswers = new Dictionary<int, int>();
+    public Dictionary<int, int> selectedAnswers = new Dictionary<int, int>();
 
     void Start()
     {
