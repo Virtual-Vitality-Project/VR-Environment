@@ -14,8 +14,9 @@ namespace NavKeypad
         public Transform playerHead; // Set this to the player's head/camera transform in the Inspector
         public Vector3 offsetFromHead = new Vector3(0, 0, 0.5f); // Offset from the player's head position
         public float moveSpeed = 5f; // Speed at which the keypad moves to the target position
-
         private bool isMoving = false;
+        public GameObject Keyboard;
+
 
         [Header("Events")]
         [SerializeField] private UnityEvent onAccessGranted;
@@ -110,7 +111,7 @@ namespace NavKeypad
                 }
             }
 
-            if (isMoving)
+            /*if (isMoving)
             {
                 // Calculate the target position in front of the player's face
                 Vector3 targetPosition = playerHead.position + playerHead.forward * offsetFromHead.z + playerHead.right * offsetFromHead.x + playerHead.up * offsetFromHead.y;
@@ -118,7 +119,7 @@ namespace NavKeypad
                 // Smoothly move the keypad towards the target position
                 transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-            }
+            }*/
         }
 
         private void Awake()
@@ -186,10 +187,14 @@ namespace NavKeypad
                 }
             } else
             {
+                StartCoroutine(DisplayResultRoutine(false));
                 Debug.Log("The code doesnt match the briefcases");
             }
 
-            
+            if (isMoving)
+            {
+
+            }
 
         }
 
@@ -237,8 +242,8 @@ namespace NavKeypad
         {
             Debug.Log("ON");
             isMoving = true;
-
-            transform.SetParent(playerHead); // Set the keypad as a child of the main camera
+            Keyboard.transform.SetParent(playerHead);
+            //transform.SetParent(playerHead); // Set the keypad as a child of the main camera
         }
 
         /*private void OnTriggerExit(Collider other)
