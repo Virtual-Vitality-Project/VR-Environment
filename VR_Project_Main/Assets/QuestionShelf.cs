@@ -125,6 +125,7 @@ public class QuestionShelf : MonoBehaviour
 
         // Get the initial position of the top shelf
         Vector3 topStartPosition = KofferShelf_floor_shelf_top.transform.localPosition;
+        Vector3 topTargetPosition = new Vector3(topStartPosition.x, targetYPosition, topStartPosition.z);
 
         while (elapsedTime < duration)
         {
@@ -132,7 +133,7 @@ public class QuestionShelf : MonoBehaviour
             float smoothStep = t * t * (3f - 2f * t);
 
             // Calculate the target position for the top shelf
-            Vector3 topTargetPosition = new Vector3(topStartPosition.x, targetYPosition, topStartPosition.z);
+           
             KofferShelf_floor_shelf_top.transform.localPosition = Vector3.Lerp(topStartPosition, topTargetPosition, smoothStep);
 
             for (int i = 0; i < shelfInstances.Count; i++)
@@ -161,6 +162,7 @@ public class QuestionShelf : MonoBehaviour
         for (int i = 0; i < shelfInstances.Count; i++)
         {
             shelfInstances[i].transform.localPosition = new Vector3(startPositions[i].x, targetYPosition - yOffset * i, startPositions[i].z);
+            KofferShelf_floor_shelf_top.transform.localPosition = topTargetPosition;
 
             Transform shelfCover = shelfInstances[i].transform.Find("Shelf_cover");
             if (i == currentQuestion)
