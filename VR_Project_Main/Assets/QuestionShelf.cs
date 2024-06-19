@@ -24,7 +24,7 @@ public class QuestionShelf : MonoBehaviour
     private int amountOfObjectInsideTrigger = 0;
     private List<GameObject> shelfInstances = new List<GameObject>();
 
-    
+
 
     private Dictionary<string, (List<string> answers, int correctIndex)> questionsAndAnswers = new Dictionary<string, (List<string>, int)>()
     {
@@ -38,6 +38,11 @@ public class QuestionShelf : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < questionsAndAnswers.Count; i++)
+        {
+            selectedAnswers[i] = -1;
+        }
+
         // Create copies of KofferShelf_floor_shelf_prefab for each question
         CreateShelfInstances();
 
@@ -55,6 +60,8 @@ public class QuestionShelf : MonoBehaviour
         {
             GameObject newShelf = Instantiate(KofferShelf_floor_shelf_prefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0), kofferShelf.transform);
             newShelf.transform.localPosition = new Vector3(1.404f, yOffset * i, 0.392f);
+
+            allowedObjectsList.Add(newShelf);
 
             // Set the text for "Text (Answer)"
             TextMeshPro answerText = newShelf.transform.Find("Text (Answer)").GetComponent<TextMeshPro>();
@@ -180,6 +187,7 @@ public class QuestionShelf : MonoBehaviour
     // Function to spawn answer options for the current question
     public void SpawnAnswers(List<string> answers, int correctIndex)
     {
+        UpdateDebugText();
         float minX = -0.6f;
         float maxX = 0.6f;
         float stepX = (maxX - minX) / (answers.Count - 1);
@@ -233,12 +241,15 @@ public class QuestionShelf : MonoBehaviour
         if (selectedAnswers.ContainsKey(currentQuestion))
         {
             int selectedAnswerIndex = selectedAnswers[currentQuestion];
-            Debug.Log("Found selectedAnswerIndex for this question: " + selectedAnswerIndex);
-            GameObject selectedAnswer = spawnedAnswerObjects[selectedAnswerIndex];
-            // Move the selected answer to the collisionDetector position
-            selectedAnswer.transform.SetParent(collisionDetector.transform);
-            selectedAnswer.transform.localPosition = new Vector3(0, 0.2f, 0);
-            selectedAnswer.transform.SetParent(kofferShelf.transform);
+            if (selectedAnswerIndex >= 0)
+            {
+                Debug.Log("Found selectedAnswerIndex for this question: " + selectedAnswerIndex);
+                GameObject selectedAnswer = spawnedAnswerObjects[selectedAnswerIndex];
+                // Move the selected answer to the collisionDetector position
+                selectedAnswer.transform.SetParent(collisionDetector.transform);
+                selectedAnswer.transform.localPosition = new Vector3(0, 0.2f, 0);
+                selectedAnswer.transform.SetParent(kofferShelf.transform);
+            }
         }
     }
 
@@ -259,15 +270,21 @@ public class QuestionShelf : MonoBehaviour
     {
         amountOfObjectInsideTrigger = objectsInsideCount;
         selectedAnswers[currentQuestion] = answerIndex;
-        textDebug.text = "Amount: " + amountOfObjectInsideTrigger + "\n currentQuestion answer:" + selectedAnswers[currentQuestion];
+        UpdateDebugText();
     }
 
     public void AnswerTriggeredExit(int objectsInsideCount)
     {
         amountOfObjectInsideTrigger = objectsInsideCount;
         selectedAnswers[currentQuestion] = -1;
-        textDebug.text = "Amount: " + amountOfObjectInsideTrigger + "\n currentQuestion answer:" + selectedAnswers[currentQuestion];
+        UpdateDebugText();
     }
+
+    public void UpdateDebugText() {
+        textDebug.text = "currentQuestion: " + (currentQuestion+1) + "\nAmount: " + amountOfObjectInsideTrigger + "\ncurrentQuestion answer: " + selectedAnswers[currentQuestion];
+    }
+
+
 
     public void TopButtonClicked()
     {
