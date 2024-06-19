@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +10,13 @@ namespace NavKeypad
 {
     public class Keypad : MonoBehaviour
     {
+        [Header("Collision components")]
+        public Transform playerHead; // Set this to the player's head/camera transform in the Inspector
+        public Vector3 offsetFromHead = new Vector3(0, 0, 0.5f); // Offset from the player's head position
+        public float moveSpeed = 5f; // Speed at which the keypad moves to the target position
+
+        private bool isMoving = false;
+
         [Header("Events")]
         [SerializeField] private UnityEvent onAccessGranted;
         [SerializeField] private UnityEvent onAccessDenied;
@@ -37,11 +46,80 @@ namespace NavKeypad
         [SerializeField] private Renderer panelMesh;
         [SerializeField] private TMP_Text keypadDisplayText;
         [SerializeField] private AudioSource audioSource;
+        // Find the GameObject that has the ExampleScript attached
+        [SerializeField]private GameObject Questionshelf;
 
 
         private string currentInput;
         private bool displayingResult = false;
         private bool accessWasGranted = false;
+
+        private Dictionary<int, int> selectedAnswers = new Dictionary<int, int>();
+        public Dictionary<string, (List<string> answers, int correctIndex)> questionsAndAnswers = new Dictionary<string, (List<string>, int)>() { };
+
+        public void Start()
+        {
+            // Get the QuestionShelf component from the GameObject
+            QuestionShelf questionShelf = Questionshelf.GetComponent<QuestionShelf>();
+
+            // Access and store the questionsAndAnswers variable
+            questionsAndAnswers = questionShelf.questionsAndAnswers;
+
+            // Print the questionsAndAnswers to the console
+            foreach (var question in questionsAndAnswers)
+            {
+                Debug.Log($"Question: {question.Key}, Answers: {string.Join(", ", question.Value.answers)}, Correct Index: {question.Value.correctIndex}");
+            }
+
+            // Create a list to store the correct indexes
+            List<int> correctIndexes = new List<int>();
+
+            // Loop through the questionsAndAnswers to extract the correct indexes
+            foreach (var question in questionsAndAnswers)
+            {
+                correctIndexes.Add(question.Value.correctIndex + 1);
+            }
+
+            // Print the correct indexes to the console
+            Debug.Log("The correct indexes are: " + string.Join(", ", correctIndexes));
+            // Convert the list of correct indexes to a single integer by concatenation
+            string concatenatedIndexes = string.Join("", correctIndexes);
+            keypadCombo = int.Parse(concatenatedIndexes);
+        }
+
+        //Debug only take away in production
+        // Update method to capture keyboard input
+        private void Update()
+        {
+            if (displayingResult || accessWasGranted) return;
+
+            foreach (char c in Input.inputString)
+            {
+                if (char.IsDigit(c))
+                {
+                    AddInput(c.ToString());
+                }
+                else if (c == '\n' || c == '\r') // Enter/Return key
+                {
+                    CheckCombo();
+                }
+                else if (c == '\b' && currentInput.Length > 0) // Backspace key
+                {
+                    currentInput = currentInput.Substring(0, currentInput.Length - 1);
+                    keypadDisplayText.text = currentInput;
+                }
+            }
+
+            if (isMoving)
+            {
+                // Calculate the target position in front of the player's face
+                Vector3 targetPosition = playerHead.position + playerHead.forward * offsetFromHead.z + playerHead.right * offsetFromHead.x + playerHead.up * offsetFromHead.y;
+
+                // Smoothly move the keypad towards the target position
+                transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+            }
+        }
 
         private void Awake()
         {
@@ -73,18 +151,45 @@ namespace NavKeypad
         }
         public void CheckCombo()
         {
-            if (int.TryParse(currentInput, out var currentKombo))
+            // Get the QuestionShelf component from the GameObject
+            QuestionShelf questionShelf = Questionshelf.GetComponent<QuestionShelf>();
+
+            // Access and store the selectedAnswers variable
+            selectedAnswers = questionShelf.selectedAnswers;
+
+            // Print the selectedAnswers to the console
+            Debug.Log("The value of selectedAnswers is: " + string.Join(", ", selectedAnswers.Select(kvp => $"{kvp.Key}: {kvp.Value}")));
+            // Create a list to store the correct indexes
+            List<int> correctIndexes = new List<int>();
+
+            // Loop through the questionsAndAnswers to extract the correct indexes
+            foreach (var question in selectedAnswers)
             {
-                bool granted = currentKombo == keypadCombo;
-                if (!displayingResult)
+                correctIndexes.Add(question.Value + 1);
+            }
+            // Convert the list of correct indexes to a single integer by concatenation
+            string concatenatedIndexes = string.Join("", correctIndexes);
+            Debug.Log(concatenatedIndexes);
+            if (int.Parse(currentInput) == int.Parse(concatenatedIndexes))
+            {
+                if (int.TryParse(currentInput, out var currentKombo))
                 {
-                    StartCoroutine(DisplayResultRoutine(granted));
+                    bool granted = currentKombo == keypadCombo;
+                    if (!displayingResult)
+                    {
+                        StartCoroutine(DisplayResultRoutine(granted));
+                    }
                 }
-            }
-            else
+                else
+                {
+                    Debug.LogWarning("Couldn't process input for some reason..");
+                }
+            } else
             {
-                Debug.LogWarning("Couldn't process input for some reason..");
+                Debug.Log("The code doesnt match the briefcases");
             }
+
+            
 
         }
 
@@ -127,5 +232,20 @@ namespace NavKeypad
             audioSource.PlayOneShot(accessGrantedSfx);
         }
 
+        //Collision detection with vr hand
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("ON");
+            isMoving = true;
+
+            transform.SetParent(playerHead); // Set the keypad as a child of the main camera
+        }
+
+        /*private void OnTriggerExit(Collider other)
+        {
+            Debug.Log("OFF");
+            isMoving = false;
+
+        }*/
     }
 }
