@@ -142,6 +142,7 @@ public class Websocket : MonoBehaviour
             Debug.Log("Playing audio");
             audioSource.clip = DownloadHandlerAudioClip.GetContent(request);
             audioSource.Play();
+
         }
 
         // Optionally delete the temporary files
