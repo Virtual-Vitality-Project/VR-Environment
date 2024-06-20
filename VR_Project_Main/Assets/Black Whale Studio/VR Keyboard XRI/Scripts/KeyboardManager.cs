@@ -13,6 +13,7 @@
  * For questions or to join our community, please visit our Discord: https://discord.gg/55gtTryfWw
  */
 
+using NavKeypad;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,6 +23,8 @@ namespace Keyboard
 {
     public class KeyboardManager : MonoBehaviour
     {
+        [Header("Keypad")]
+        [SerializeField] private GameObject KeypadObject;
         [Header("Keyboard Setup")]
         [SerializeField] private KeyChannel keyChannel;
         [SerializeField] private Button spacebarButton;
@@ -91,6 +94,7 @@ namespace Keyboard
             deleteButton.onClick.AddListener(OnDeletePress);
             switchButton.onClick.AddListener(OnSwitchPress);
             shiftButton.onClick.AddListener(OnShiftPress);
+            enterButton.onClick.AddListener(OnEnterPress);
             switchNumberSpecialButton.onClick.AddListener(SwitchBetweenNumbersAndSpecialCharacters);
             switchButtonText = switchButton.GetComponentInChildren<TextMeshProUGUI>();
             switchNumSpecButtonText = switchNumberSpecialButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -139,6 +143,7 @@ namespace Keyboard
 
             outputField.text = outputField.text.Remove(startPos, endPos - startPos);
             outputField.text = outputField.text.Insert(startPos, textToInsert);
+            
 
             outputField.selectionAnchorPosition = outputField.selectionFocusPosition = startPos + textToInsert.Length;
 
@@ -149,6 +154,9 @@ namespace Keyboard
             }
     
             CheckTextLength();
+
+            
+            
         }
 
         private void OnSpacePress()
@@ -158,10 +166,11 @@ namespace Keyboard
 
             outputField.text = outputField.text.Remove(startPos, endPos - startPos);
             outputField.text = outputField.text.Insert(startPos, " ");
-
+            
             outputField.selectionAnchorPosition = outputField.selectionFocusPosition = startPos + 1;
             
             CheckTextLength();
+            
         }
 
         private void OnDeletePress()
@@ -182,10 +191,21 @@ namespace Keyboard
             }
             
             CheckTextLength();
+            
         }
 
+        private void OnEnterPress()
+        {
+            Keypad KeypadScript = KeypadObject.GetComponent<Keypad>();
+            KeypadScript.CheckCombo();
+
+            outputField.text = "";
+        }
         private void CheckTextLength()
         {
+            Keypad KeypadScript = KeypadObject.GetComponent<Keypad>();
+            KeypadScript.recieveStringFromKeyboard(outputField.text);
+            Debug.Log(outputField.text + "<-- Outputfield.text");
             int currentLength = outputField.text.Length;
 
             // Raise event to enable or disable keys based on the text length
@@ -203,6 +223,7 @@ namespace Keyboard
             DeactivateShift();
             capsLockActive = false;
             UpdateShiftButtonAppearance();
+           
         }
 
         private void OnSwitchPress()

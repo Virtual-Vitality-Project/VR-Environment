@@ -12,9 +12,11 @@ namespace NavKeypad
     {
         [Header("Collision components")]
         public Transform playerHead; // Set this to the player's head/camera transform in the Inspector
-        public Vector3 offsetFromHead = new Vector3(0, 0, 0.5f); // Offset from the player's head position
+        public Vector3 offsetFromHead = new Vector3(0, 0, 4f); // Offset from the player's head position
         public float moveSpeed = 5f; // Speed at which the keypad moves to the target position
         private bool isMoving = false;
+        private Vector3 initialHeadPosition;
+        private float deactivateDistance = 1f; // Distance threshold to deactivate the keyboard
         public GameObject Keyboard;
 
 
@@ -111,15 +113,21 @@ namespace NavKeypad
                 }
             }
 
-            /*if (isMoving)
+            if (isMoving)
             {
-                // Calculate the target position in front of the player's face
-                Vector3 targetPosition = playerHead.position + playerHead.forward * offsetFromHead.z + playerHead.right * offsetFromHead.x + playerHead.up * offsetFromHead.y;
 
-                // Smoothly move the keypad towards the target position
-                transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-            }*/
+
+                
+
+                // Check if the player has moved beyond the deactivate distance
+                if (Vector3.Distance(playerHead.position, initialHeadPosition) > deactivateDistance)
+                {
+                    Debug.Log("Deactivated");
+                    Keyboard.SetActive(false);
+                    isMoving = false;
+                }
+            }
         }
 
         private void Awake()
@@ -132,6 +140,7 @@ namespace NavKeypad
         //Gets value from pressedbutton
         public void AddInput(string input)
         {
+            Debug.Log(input);
             audioSource.PlayOneShot(buttonClickedSfx);
             if (displayingResult || accessWasGranted) return;
             switch (input)
@@ -150,6 +159,26 @@ namespace NavKeypad
             }
 
         }
+
+        public void recieveStringFromKeyboard(string input)
+        {
+            switch (input)
+            {
+                case "enter":
+                    CheckCombo();
+                    break;
+                default:
+                    if (currentInput != null && currentInput.Length == 9) // 9 max passcode size 
+                    {
+                        return;
+                    }
+                    currentInput = input;
+                    keypadDisplayText.text = currentInput;
+                    Debug.Log(currentInput);
+                    break;
+            }
+        }
+
         public void CheckCombo()
         {
             // Get the QuestionShelf component from the GameObject
@@ -171,20 +200,17 @@ namespace NavKeypad
             // Convert the list of correct indexes to a single integer by concatenation
             string concatenatedIndexes = string.Join("", correctIndexes);
             Debug.Log(concatenatedIndexes);
-            if (int.Parse(currentInput) == int.Parse(concatenatedIndexes))
+            //If currentInput matches briefcases
+            if (currentInput == concatenatedIndexes)
             {
-                if (int.TryParse(currentInput, out var currentKombo))
+                //If currentInput is actually correct
+                if (currentInput == keypadCombo.ToString())
                 {
-                    bool granted = currentKombo == keypadCombo;
                     if (!displayingResult)
                     {
-                        StartCoroutine(DisplayResultRoutine(granted));
+                        StartCoroutine(DisplayResultRoutine(true));
                     }
-                }
-                else
-                {
-                    Debug.LogWarning("Couldn't process input for some reason..");
-                }
+                }                
             } else
             {
                 StartCoroutine(DisplayResultRoutine(false));
@@ -193,7 +219,7 @@ namespace NavKeypad
 
             if (isMoving)
             {
-
+                Keyboard.SetActive(false);
             }
 
         }
@@ -237,20 +263,20 @@ namespace NavKeypad
             audioSource.PlayOneShot(accessGrantedSfx);
         }
 
-        //Collision detection with vr hand
+        // Collision detection with VR hand or player
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log("ON");
             isMoving = true;
+
+            // Activate and position the keyboard relative to the player's head
+            Keyboard.SetActive(true);
             Keyboard.transform.SetParent(playerHead);
-            //transform.SetParent(playerHead); // Set the keypad as a child of the main camera
+            Keyboard.transform.localPosition = offsetFromHead;
+            /*// Smoothly move the keypad towards the target position
+            Keyboard.transform.position = Vector3.Lerp(transform.position, Keyboard.transform.position, 2);*/
+            // Track the initial position of the player's head
+            initialHeadPosition = playerHead.position;
         }
-
-        /*private void OnTriggerExit(Collider other)
-        {
-            Debug.Log("OFF");
-            isMoving = false;
-
-        }*/
     }
 }
