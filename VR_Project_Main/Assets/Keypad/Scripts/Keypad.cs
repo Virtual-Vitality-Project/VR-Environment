@@ -192,6 +192,13 @@ namespace NavKeypad
             Debug.Log("The value of selectedAnswers is: " + string.Join(", ", selectedAnswers.Select(kvp => $"{kvp.Key}: {kvp.Value}")));
             // Create a list to store the correct indexes
             List<int> correctIndexes = new List<int>();
+            
+            // Loop through the questionsAndAnswers to extract the correct indexes
+            foreach (var question in selectedAnswers)
+            {
+                correctIndexes.Add(question.Value + 1);
+            }
+
             // Convert the list of correct indexes to a single integer by concatenation
             string concatenatedIndexes = string.Join("", correctIndexes);
             Debug.Log(concatenatedIndexes + "ConcatenatedIndex");
@@ -201,16 +208,9 @@ namespace NavKeypad
             {
                 Debug.Log("Je hebt een fout gemaakt zet die op -1");
             }
-            // Loop through the questionsAndAnswers to extract the correct indexes
-            foreach (var question in selectedAnswers)
-            {
-                correctIndexes.Add(question.Value + 1);
-            }
 
-            
-            
 
-            
+
             //If currentInput matches briefcases
             if (currentInput == concatenatedIndexes)
             {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -958,11 +958,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2602624428308952535, guid: 466dffbaf8c2026409ad17160d9085be,
         type: 3}
-      propertyPath: deadTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2602624428308952535, guid: 466dffbaf8c2026409ad17160d9085be,
-        type: 3}
       propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -999,7 +994,7 @@ PrefabInstance:
     - target: {fileID: 2766702115006284417, guid: 466dffbaf8c2026409ad17160d9085be,
         type: 3}
       propertyPath: m_Name
-      value: KofferShelf_button (bottom)
+      value: KofferShelf_button (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3255711407898220603, guid: 466dffbaf8c2026409ad17160d9085be,
         type: 3}
@@ -1050,16 +1045,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6973887261232091451, guid: 466dffbaf8c2026409ad17160d9085be,
-        type: 3}
-      propertyPath: m_LinearLimit.bounciness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6973887261232091451, guid: 466dffbaf8c2026409ad17160d9085be,
-        type: 3}
-      propertyPath: m_LinearLimit.contactDistance
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1376,7 +1361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &390948441
 Transform:
   m_ObjectHideFlags: 0
@@ -1427,7 +1412,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 5
   m_Range: 100
   m_SpotAngle: 179
   m_InnerSpotAngle: 0
@@ -3319,7 +3304,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.3939999, y: 0.095999986, z: 0.4395}
-  m_LocalScale: {x: 0.45, y: 0.07, z: 0.4}
+  m_LocalScale: {x: 0.45, y: 0.1, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1285086499}
@@ -3917,11 +3902,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keyboard
       objectReference: {fileID: 0}
-    - target: {fileID: 3484128598961847049, guid: 02be27ab17ab3b14f954f65dc06dd738,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3484128598961847050, guid: 02be27ab17ab3b14f954f65dc06dd738,
         type: 3}
       propertyPath: KeypadObject
@@ -4020,7 +4000,7 @@ PrefabInstance:
     - target: {fileID: 3484128598961847063, guid: 02be27ab17ab3b14f954f65dc06dd738,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.377
+      value: 4.322
       objectReference: {fileID: 0}
     - target: {fileID: 3484128598961847063, guid: 02be27ab17ab3b14f954f65dc06dd738,
         type: 3}
@@ -4277,7 +4257,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 3
   m_Range: 100
   m_SpotAngle: 179
   m_InnerSpotAngle: 0
@@ -6618,7 +6598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1309077966
 Transform:
   m_ObjectHideFlags: 0
@@ -6669,7 +6649,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 10
   m_Range: 100
   m_SpotAngle: 179
   m_InnerSpotAngle: 0
@@ -7368,7 +7348,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 100
   m_SpotAngle: 179
   m_InnerSpotAngle: 0
@@ -7754,7 +7734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1457148233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9241,7 +9221,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11597,11 +11577,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2602624428308952535, guid: 466dffbaf8c2026409ad17160d9085be,
         type: 3}
-      propertyPath: deadTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2602624428308952535, guid: 466dffbaf8c2026409ad17160d9085be,
-        type: 3}
       propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -11638,7 +11613,7 @@ PrefabInstance:
     - target: {fileID: 2766702115006284417, guid: 466dffbaf8c2026409ad17160d9085be,
         type: 3}
       propertyPath: m_Name
-      value: KofferShelf_button (top)
+      value: KofferShelf_button
       objectReference: {fileID: 0}
     - target: {fileID: 3255711407898220603, guid: 466dffbaf8c2026409ad17160d9085be,
         type: 3}
@@ -11689,26 +11664,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6973887261232091451, guid: 466dffbaf8c2026409ad17160d9085be,
-        type: 3}
-      propertyPath: m_LinearLimit.bounciness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6973887261232091451, guid: 466dffbaf8c2026409ad17160d9085be,
-        type: 3}
-      propertyPath: m_LinearLimitSpring.damper
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6973887261232091451, guid: 466dffbaf8c2026409ad17160d9085be,
-        type: 3}
-      propertyPath: m_LinearLimitSpring.spring
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6973887261232091451, guid: 466dffbaf8c2026409ad17160d9085be,
-        type: 3}
-      propertyPath: m_LinearLimit.contactDistance
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12293,30 +12248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1474921548918485136, guid: 97f3ae45b226a1c45a3cc430401c71df,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 2274099116137410018, guid: 97f3ae45b226a1c45a3cc430401c71df,
         type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2456369272222401481, guid: 97f3ae45b226a1c45a3cc430401c71df,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 3042929296941391438, guid: 97f3ae45b226a1c45a3cc430401c71df,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 3174722658522717523, guid: 97f3ae45b226a1c45a3cc430401c71df,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3455761469790004559, guid: 97f3ae45b226a1c45a3cc430401c71df,
         type: 3}
