@@ -248,9 +248,7 @@ public class QuestionShelf : MonoBehaviour
                 Debug.Log("Found selectedAnswerIndex for this question: " + selectedAnswerIndex);
                 GameObject selectedAnswer = spawnedAnswerObjects[selectedAnswerIndex];
                 // Move the selected answer to the collisionDetector position
-                selectedAnswer.transform.SetParent(collisionDetector.transform);
-                selectedAnswer.transform.localPosition = new Vector3(0, 0.2f, 0);
-                selectedAnswer.transform.SetParent(kofferShelf.transform);
+                selectedAnswer.transform.position = collisionDetector.transform.position;
             }
         }
     }
