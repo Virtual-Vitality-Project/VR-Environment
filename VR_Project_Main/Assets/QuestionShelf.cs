@@ -28,10 +28,11 @@ public class QuestionShelf : MonoBehaviour
 
     public Dictionary<string, (List<string> answers, int correctIndex)> questionsAndAnswers = new Dictionary<string, (List<string>, int)>()
     {
-        {"What color is an apple?", (new List<string>{"Red", "Green", "Yellow", "Purple"}, 0)},
+        {"How many legs does a dog have?", (new List<string>{"Four", "Two", "Five", "Three"}, 0)},
         {"Which animal says 'meow'?", (new List<string>{"Dog", "Cat", "Cow", "Bird"}, 1)},
-        {"What color is the sky?", (new List<string>{"Purple", "Blue", "Gray", "White"}, 1)},
+        {"What color is the sky?", (new List<string>{"Green", "Blue", "Yellow", "Red"}, 1)},
         {"What is the capital of France?", (new List<string>{"London", "Madrid", "Paris", "\"F\""}, 2)},
+
     };
 
     public Dictionary<int, int> selectedAnswers = new Dictionary<int, int>();
@@ -247,10 +248,9 @@ public class QuestionShelf : MonoBehaviour
             {
                 Debug.Log("Found selectedAnswerIndex for this question: " + selectedAnswerIndex);
                 GameObject selectedAnswer = spawnedAnswerObjects[selectedAnswerIndex];
+                Debug.Log(selectedAnswer + "Answer gameobject");
                 // Move the selected answer to the collisionDetector position
-                selectedAnswer.transform.SetParent(collisionDetector.transform);
-                selectedAnswer.transform.localPosition = new Vector3(0, 0.2f, 0);
-                selectedAnswer.transform.SetParent(kofferShelf.transform);
+                selectedAnswer.transform.position = collisionDetector.transform.position;
             }
         }
     }
