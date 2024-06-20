@@ -273,6 +273,7 @@ namespace NavKeypad
             Keyboard.SetActive(true);
             Keyboard.transform.SetParent(playerHead);
             Keyboard.transform.localPosition = offsetFromHead;
+            Keyboard.transform.localRotation = new Quaternion(0f, 0f, 0f, 0f);
             /*// Smoothly move the keypad towards the target position
             Keyboard.transform.position = Vector3.Lerp(transform.position, Keyboard.transform.position, 2);*/
             // Track the initial position of the player's head
