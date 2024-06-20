@@ -183,7 +183,7 @@ public class QuestionShelf : MonoBehaviour
 
     // Configurable size parameters
     public float minSize = 0.12f;
-    public float maxSize = 0.2f;
+    public float maxSize = 0.25f;
     public int maxQuestionsForMinSize = 10;
 
     // Function to spawn answer options for the current question
@@ -216,10 +216,10 @@ public class QuestionShelf : MonoBehaviour
             newAnswer.transform.localScale = Vector3.one * size;
 
             // Indicate the correct answer by changing its color or adding an icon
-            if (i == correctIndex)
-            {
-                newAnswer.transform.Find("Text (answer)").GetComponent<TextMeshPro>().color = Color.green;
-            }
+            // if (i == correctIndex)
+            // {
+            //     newAnswer.transform.Find("Text (answer)").GetComponent<TextMeshPro>().color = Color.green;
+            // }
 
             // Add the new answer object to the list of spawned answer objects
             spawnedAnswerObjects.Add(newAnswer);
