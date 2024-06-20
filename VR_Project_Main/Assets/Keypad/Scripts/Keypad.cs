@@ -59,7 +59,7 @@ namespace NavKeypad
 
         private Dictionary<int, int> selectedAnswers = new Dictionary<int, int>();
         public Dictionary<string, (List<string> answers, int correctIndex)> questionsAndAnswers = new Dictionary<string, (List<string>, int)>() { };
-
+        List<int> CorrectAnswers = new List<int>();
         public void Start()
         {
             // Get the QuestionShelf component from the GameObject
@@ -71,6 +71,7 @@ namespace NavKeypad
             // Print the questionsAndAnswers to the console
             foreach (var question in questionsAndAnswers)
             {
+                CorrectAnswers.Add(question.Value.correctIndex + 1);
                 Debug.Log($"Question: {question.Key}, Answers: {string.Join(", ", question.Value.answers)}, Correct Index: {question.Value.correctIndex}");
             }
 
@@ -191,15 +192,25 @@ namespace NavKeypad
             Debug.Log("The value of selectedAnswers is: " + string.Join(", ", selectedAnswers.Select(kvp => $"{kvp.Key}: {kvp.Value}")));
             // Create a list to store the correct indexes
             List<int> correctIndexes = new List<int>();
-
+            // Convert the list of correct indexes to a single integer by concatenation
+            string concatenatedIndexes = string.Join("", correctIndexes);
+            Debug.Log(concatenatedIndexes + "ConcatenatedIndex");
+            string concatenatedCorrectAnswer = string.Join("", CorrectAnswers);
+            Debug.Log(concatenatedCorrectAnswer + "ConcatenatedCorrectAnswers");
+            if (concatenatedIndexes != concatenatedCorrectAnswer)
+            {
+                Debug.Log("Je hebt een fout gemaakt zet die op -1");
+            }
             // Loop through the questionsAndAnswers to extract the correct indexes
             foreach (var question in selectedAnswers)
             {
                 correctIndexes.Add(question.Value + 1);
             }
-            // Convert the list of correct indexes to a single integer by concatenation
-            string concatenatedIndexes = string.Join("", correctIndexes);
-            Debug.Log(concatenatedIndexes);
+
+            
+            
+
+            
             //If currentInput matches briefcases
             if (currentInput == concatenatedIndexes)
             {
