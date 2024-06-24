@@ -18,6 +18,8 @@ public class QuestionShelf : MonoBehaviour
     public List<GameObject> allowedObjectsList;
     public List<GameObject> spawnedObjects;
 
+    public bool playerWon = false;
+
     public float yOffset = 0.5f;
     private int previousQuestion = 1;
     private int currentQuestion = 0; // Start from the first question
@@ -307,4 +309,11 @@ public class QuestionShelf : MonoBehaviour
         }
         DisplayQuestionAndAnswers();
     }
+
+    public void SetPlayerWon()
+    {
+        playerWon = true;
+    }
 }
+
+
