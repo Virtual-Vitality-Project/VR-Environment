@@ -23,7 +23,7 @@ public class Login : MonoBehaviour
     void Start()
     {
 
-        // beheerMethode = new BeheersysteemMethods("00080E2255A4CDC4210DCC5AABB574CCoi2hro32j@#I$o32h432n");
+        // BeheersysteemMethods beheerMethode = new BeheersysteemMethods("00080E2255A4CDC4210DCC5AABB574CCoi2hro32j@#I$o32h432n");
         // String enc = beheerMethode.Encrypt("http://192.168.1.2/api/login");
         // Debug.Log("<start>"+ enc + "<end>");
 

@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scenes\StudentLogin.cs" />
     <Compile Include="Assets\QuestionShelf.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
+    <Compile Include="Assets\RealTimeRadio.cs" />
     <Compile Include="Assets\Keypad\Scripts\Keypad.cs" />
     <Compile Include="Assets\Keypad\Scripts\KeypadInteractionFPV.cs" />
     <Compile Include="Assets\VR Keyboard XRI\Scripts\KeyChannel.cs" />
