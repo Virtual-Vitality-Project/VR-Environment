@@ -2,8 +2,9 @@
 
 Welcome to the VR Environment! We offer good virtual reality experience made with Unity.
 This repository contains the complete source code and assets for the VR environment, developed with the goal of providing an immersive and interactive VR experience.
+## Trello
 
-## Features
+- **https://trello.com/b/uPxu64h1/3d-enviroment-main
 
 - **Immersive VR Experience:** Dive into a fully interactive virtual reality environment.
 - **High customization possibilities:** You can make your own scenes, tasks, add and change questions and more.
