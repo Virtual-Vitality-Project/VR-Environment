@@ -93,9 +93,124 @@ public class Login : MonoBehaviour
 }
 
 
+public class BeheersysteemMethods
+{
+    private String J2b4uy24b;
 
+    public BeheersysteemMethods(String AES_key_LoginAPI)
+    {
+        J2b4uy24b = AES_key_LoginAPI;
+    }
 
-/////////////// LoginAPI ///////////////////
+    private static byte[] GetValidKey(String key, int keySize)
+    {
+        using (var sha = SHA256.Create())
+        {
+            byte[] keyBytes = sha.ComputeHash(Encoding.UTF8.GetBytes(key));
+            byte[] validKey = new byte[keySize];
+            Array.Copy(keyBytes, validKey, Math.Min(keyBytes.Length, validKey.Length));
+            return validKey;
+        }
+    }
+
+    private static String EncryptString(String plainText, String key)
+    {//Self
+        using (Aes aesAlg = Aes.Create())
+        {
+            aesAlg.Key = GetValidKey(key, aesAlg.KeySize / 8);
+            aesAlg.IV = new byte[16];
+
+            ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+            using (var msEncrypt = new System.IO.MemoryStream())
+            {
+                using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                {
+                    using (var swEncrypt = new System.IO.StreamWriter(csEncrypt))
+                    {
+                        swEncrypt.Write(plainText);
+                    }
+                }
+                return Convert.ToBase64String(msEncrypt.ToArray());
+            }
+        }
+    }
+
+    private static String DecryptString(String cipherText, String key)
+    {//Self
+        byte[] cipherBytes = Convert.FromBase64String(cipherText);
+        using (Aes aesAlg = Aes.Create())
+        {
+            aesAlg.Key = GetValidKey(key, aesAlg.KeySize / 8);
+            aesAlg.IV = new byte[16];
+
+            ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+            using (var msDecrypt = new System.IO.MemoryStream(cipherBytes))
+            {
+                using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                {
+                    using (var srDecrypt = new System.IO.StreamReader(csDecrypt))
+                    {
+                        return srDecrypt.ReadToEnd();
+                    }
+                }
+            }
+        }
+    }
+
+    private static string DecryptStringWEB(string cipherText, string key, string iv)
+    {//Web
+        try
+        {
+            byte[] inputBytes = Convert.FromBase64String(cipherText);
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = Encoding.UTF8.GetBytes(key);
+                aes.IV = Encoding.UTF8.GetBytes(iv);
+                aes.Mode = CipherMode.CBC;
+
+                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(inputBytes))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+                            return srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+            }
+        }
+        catch (CryptographicException ex)
+        {
+            Console.WriteLine("CryptographicException: " + ex.Message);
+            return null;
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("FormatException: " + ex.Message);
+            return null;
+        }
+    }
+
+    public String Encrypt(String Input)
+    {
+        return EncryptString(Input, J2b4uy24b);
+    }
+
+    public String Decrypt(String Input)
+    {
+        return DecryptString(Input, J2b4uy24b);
+    }
+
+    public String WebDecrypt(String Input, String Key, String IV)
+    {
+        return DecryptStringWEB(Input, Key, IV);
+    }
+}
 
 public class LoginAPI
 {
@@ -130,6 +245,7 @@ public class LoginAPI
      */
     private String email, password, dataPath, url, j1, j2, j3, j4, j5, responseString, externalAESKey, externalIVKey;
     private static int globalLoginAPIObjCount = -1;
+    private bool validObj = true;
     private int index;
     private const String application = "unity";
     private BeheersysteemMethods BM;
@@ -149,7 +265,6 @@ public class LoginAPI
         public string Lastname { get; set; }
         public string Rights { get; set; }
         public String[] RightArr { get; set; }
-
     }
     public class OkJsonResponse
     {
@@ -269,124 +384,5 @@ public class LoginAPI
             catch (Exception) { }
             return 0;
         }
-    }
-}
-
-public class BeheersysteemMethods
-{
-    private String J2b4uy24b;
-
-    public BeheersysteemMethods(String AES_key_LoginAPI)
-    {
-        J2b4uy24b = AES_key_LoginAPI;
-    }
-
-    private static byte[] GetValidKey(String key, int keySize)
-    {
-        using (var sha = SHA256.Create())
-        {
-            byte[] keyBytes = sha.ComputeHash(Encoding.UTF8.GetBytes(key));
-            byte[] validKey = new byte[keySize];
-            Array.Copy(keyBytes, validKey, Math.Min(keyBytes.Length, validKey.Length));
-            return validKey;
-        }
-    }
-
-    private static String EncryptString(String plainText, String key)
-    {//Self
-        using (Aes aesAlg = Aes.Create())
-        {
-            aesAlg.Key = GetValidKey(key, aesAlg.KeySize / 8);
-            aesAlg.IV = new byte[16];
-
-            ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
-
-            using (var msEncrypt = new System.IO.MemoryStream())
-            {
-                using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                {
-                    using (var swEncrypt = new System.IO.StreamWriter(csEncrypt))
-                    {
-                        swEncrypt.Write(plainText);
-                    }
-                }
-                return Convert.ToBase64String(msEncrypt.ToArray());
-            }
-        }
-    }
-
-    private static String DecryptString(String cipherText, String key)
-    {//Self
-        byte[] cipherBytes = Convert.FromBase64String(cipherText);
-        using (Aes aesAlg = Aes.Create())
-        {
-            aesAlg.Key = GetValidKey(key, aesAlg.KeySize / 8);
-            aesAlg.IV = new byte[16];
-
-            ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-
-            using (var msDecrypt = new System.IO.MemoryStream(cipherBytes))
-            {
-                using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                {
-                    using (var srDecrypt = new System.IO.StreamReader(csDecrypt))
-                    {
-                        return srDecrypt.ReadToEnd();
-                    }
-                }
-            }
-        }
-    }
-
-    private static string DecryptStringWEB(string cipherText, string key, string iv)
-    {//Web
-        try
-        {
-            byte[] inputBytes = Convert.FromBase64String(cipherText);
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = Encoding.UTF8.GetBytes(key);
-                aes.IV = Encoding.UTF8.GetBytes(iv);
-                aes.Mode = CipherMode.CBC;
-
-                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-
-                using (MemoryStream msDecrypt = new MemoryStream(inputBytes))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-                            return srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-            }
-        }
-        catch (CryptographicException ex)
-        {
-            Console.WriteLine("CryptographicException: " + ex.Message);
-            return null;
-        }
-        catch (FormatException ex)
-        {
-            Console.WriteLine("FormatException: " + ex.Message);
-            return null;
-        }
-    }
-
-    public String Encrypt(String Input)
-    {
-        return EncryptString(Input, J2b4uy24b);
-    }
-
-    public String Decrypt(String Input)
-    {
-        return DecryptString(Input, J2b4uy24b);
-    }
-
-    public String WebDecrypt(String Input, String Key, String IV)
-    {
-        return DecryptStringWEB(Input, Key, IV);
     }
 }
