@@ -81,15 +81,17 @@ public class RealTimeAudioManager : MonoBehaviour
     {
         while (true)
         {
-            // Update audio info every second
-            yield return new WaitForSeconds(1);
-
             if (audioSource.isPlaying)
             {
                 string clipName = audioSource.clip.name;
                 int elapsedTime = (int)audioSource.time;
                 int clipLength = (int)audioSource.clip.length;
-                audioInfo.text = $"Now playing: {clipName} ({elapsedTime}/{clipLength})";
+
+                // Format elapsed time and clip length to minutes and seconds
+                string elapsedTimeFormatted = $"{elapsedTime / 60:D2}:{elapsedTime % 60:D2}";
+                string clipLengthFormatted = $"{clipLength / 60:D2}:{clipLength % 60:D2}";
+
+                audioInfo.text = $"Now playing: {clipName} ( {elapsedTimeFormatted} / {clipLengthFormatted} )";
 
                 // Update the progress bar
                 progressBar.value = (float)elapsedTime / clipLength;
@@ -99,6 +101,9 @@ public class RealTimeAudioManager : MonoBehaviour
                 // Ensure the progress bar is reset when not playing
                 progressBar.value = 0;
             }
+
+            // Update audio info every second
+            yield return new WaitForSeconds(1);
         }
     }
 }
