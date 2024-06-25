@@ -210,20 +210,32 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 6
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 7
   m_RegexValue: 
   m_GlobalPointSize: 30
   m_CharacterLimit: 30
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1190932514}
+        m_TargetAssemblyTypeName: CustomInputField, Assembly-CSharp
+        m_MethodName: EmailInputReturned
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -1115,8 +1127,8 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -1128,7 +1140,19 @@ MonoBehaviour:
   m_CharacterLimit: 30
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1190932514}
+        m_TargetAssemblyTypeName: CustomInputField, Assembly-CSharp
+        m_MethodName: PasswordInputReturned
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -1484,6 +1508,7 @@ GameObject:
   - component: {fileID: 1190932510}
   - component: {fileID: 1190932509}
   - component: {fileID: 1190932513}
+  - component: {fileID: 1190932514}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1596,6 +1621,21 @@ MonoBehaviour:
   errorOutput: {fileID: 1969158538}
   loginButton: {fileID: 375116342}
   exitButton: {fileID: 2134670738}
+--- !u!114 &1190932514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190932508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c788ab9ebe5c09459212195643da638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emailInputField: {fileID: 95452039}
+  passwordInputField: {fileID: 573946579}
+  submitButton: {fileID: 375116342}
 --- !u!1 &1481113203
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scenes\StudentLogin.cs" />
+    <Compile Include="Assets\CustomInputField.cs" />
     <Compile Include="Assets\QuestionShelf.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\RealTimeRadio.cs" />

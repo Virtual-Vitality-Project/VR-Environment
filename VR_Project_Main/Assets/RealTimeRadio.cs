@@ -66,14 +66,14 @@ public class RealTimeAudioManager : MonoBehaviour
     {
         while (true)
         {
-            // Wait until the current clip finishes playing
-            yield return new WaitForSeconds(audioSource.clip.length - audioSource.time);
+            // Calculate the remaining time for the current clip
+            float remainingTime = audioSource.clip.length - audioSource.time;
 
-            Debug.Log("Move to the next clip in the list.");
-            currentClipIndex = (currentClipIndex + 1) % audioClips.Count;
-            audioSource.clip = audioClips[currentClipIndex];
-            audioSource.time = 0;
-            audioSource.Play();
+            // Wait until the current clip finishes playing
+            yield return new WaitForSeconds(remainingTime);
+
+            // Calculate the next clip and its start time based on the elapsed real-time
+            CalculateAndPlayAudio();
         }
     }
 
