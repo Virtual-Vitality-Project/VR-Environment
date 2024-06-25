@@ -246,7 +246,6 @@ public class LoginAPI
     private String email, password, dataPath, url, j1, j2, j3, j4, j5, responseString, externalAESKey, externalIVKey;
     private static int globalLoginAPIObjCount = -1;
     private int index;
-    private bool validObj = true;
     private const String application = "unity";
     private BeheersysteemMethods BM;
 

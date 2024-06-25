@@ -72,6 +72,7 @@
     <Compile Include="Assets\GlobalVariableStorage.cs" />
     <Compile Include="Assets\Websocket.cs" />
     <Compile Include="Assets\Keypad\Scripts\SlidingDoor.cs" />
+    <Compile Include="Assets\FinishSceneLogic.cs" />
     <Compile Include="Assets\KofferReturn.cs" />
     <Compile Include="Assets\Scripts\AnimateHandOnInput.cs" />
     <Compile Include="Assets\Scripts\VibrationManager.cs" />
