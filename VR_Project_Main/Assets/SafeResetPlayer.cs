@@ -18,10 +18,15 @@ public class SafeResetPlayer : MonoBehaviour
     {
         if (transform.position.y < minY || transform.position.y > maxY)
         {
-            Debug.LogWarning("Fell out of the map!\nReturning back.");
-            Vector3 newPosition = startPosition + new Vector3(0, 0.5f, 0);
-            transform.position = newPosition;
-            mainCamera.transform.position = new Vector3(0,0,0);
+            TeleportBack("Fell out of the map!\nReturning back.");
         }
+    }
+
+    public void TeleportBack(string message)
+    {
+        Debug.Log(message);
+        Vector3 newPosition = startPosition + new Vector3(0, 0.5f, 0);
+        transform.position = newPosition;
+        mainCamera.transform.position = new Vector3(0, 0, 0);
     }
 }
