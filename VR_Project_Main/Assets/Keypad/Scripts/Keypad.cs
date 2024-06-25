@@ -124,7 +124,7 @@ namespace NavKeypad
                 // Check if the player has moved beyond the deactivate distance
                 if (Vector3.Distance(playerHead.position, initialHeadPosition) > deactivateDistance)
                 {
-                    Debug.Log("Deactivated");
+                    Debug.Log("Keyboard Deactivated");
                     Keyboard.SetActive(false);
                     isMoving = false;
                 }
