@@ -3974,7 +3974,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca396e92315e54b4e82c492acbaaf34a, type: 3}
   - {fileID: 8300000, guid: 10d2db4f004550d4cb9f0f521b9b76bd, type: 3}
   - {fileID: 8300000, guid: 915f7169ecec82f4fa2fa5852641a488, type: 3}
-  - {fileID: 8300000, guid: aaf60dc62a72dcb489c973de1e9a1ea5, type: 3}
+  - {fileID: 8300000, guid: ab6ecdefddcc14a47a653e9ed7b6c8df, type: 3}
   audioInfo: {fileID: 641288968}
   progressBar: {fileID: 1280394351}
 --- !u!1 &814453385
