@@ -39,8 +39,6 @@ public class RealTimeAudioManager : MonoBehaviour
         // Calculate the time in the audio cycle (loop)
         float audioTime = currentTimeSeconds % totalLength;
 
-        Debug.Log("audioTime: " + audioTime);
-
         // Determine the current clip and starting time
         float accumulatedLength = 0;
         for (int i = 0; i < audioClips.Count; i++)

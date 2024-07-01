@@ -13607,6 +13607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7917647768368196606, guid: 97f3ae45b226a1c45a3cc430401c71df,
         type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917647768368196606, guid: 97f3ae45b226a1c45a3cc430401c71df,
+        type: 3}
       propertyPath: m_VolumeLayerMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
@@ -14083,7 +14088,6 @@ GameObject:
   - component: {fileID: 8721626954550735445}
   - component: {fileID: 2674464280765976318}
   - component: {fileID: 8721626954550735446}
-  - component: {fileID: 8721626954550735447}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -16544,18 +16548,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1207345, y: 0.28248897, z: 2.4399998}
   m_Center: {x: -0.5596329, y: -1.1368684e-13, z: 1.2200003}
---- !u!114 &8721626954550735447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6149732410856898687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d846bc20ee2a88145a615d22a766f3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &8729411217231185507
 MeshRenderer:
   m_ObjectHideFlags: 0
