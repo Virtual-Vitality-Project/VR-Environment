@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CollisionDetection : MonoBehaviour
 {  
     private int objectsInsideCount = 0; // Counter to track how many objects are inside the trigger zone
 
     private static QuestionShelf questionShelfInstance;
+
+    [SerializeField] private UnityEvent TriggerEntered;
 
     private void Start()
     {
@@ -26,6 +29,8 @@ public class CollisionDetection : MonoBehaviour
 
             questionShelfInstance.AnswerTriggeredEnter(objectsInsideCount, answerIndex);
         }
+
+        TriggerEntered?.Invoke();
     }
 
     private void OnTriggerExit(Collider other)

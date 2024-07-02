@@ -105,11 +105,6 @@ public class QuestionShelf : MonoBehaviour
         SpawnAnswers(tuple.answers, tuple.correctIndex);
 
         // Move the shelves to reflect the current question index
-        MoveShelves();
-    }
-
-    void MoveShelves()
-    {
         StartCoroutine(MoveShelvesCoroutine());
     }
 
@@ -285,7 +280,8 @@ public class QuestionShelf : MonoBehaviour
     }
 
     public void UpdateDebugText() {
-        textDebug.text = "currentQuestion: " + (currentQuestion+1) + "\nAmount: " + amountOfObjectInsideTrigger + "\ncurrentQuestion answer: " + selectedAnswers[currentQuestion];
+        string result = string.Join("\n", selectedAnswers.Select(answer => $"Question {answer.Key}: Selected Answer Index = {answer.Value}"));
+        textDebug.text = "currentQuestion: " + (currentQuestion+1) + "\nAmount: " + amountOfObjectInsideTrigger + "\n\nselectedAnswers:\n" + result;
     }
 
 
@@ -310,9 +306,43 @@ public class QuestionShelf : MonoBehaviour
         DisplayQuestionAndAnswers();
     }
 
+
+    void ValidateAnswers()
+    {
+        int questionIndex = 0;
+        foreach (var question in questionsAndAnswers)
+        {
+            if (selectedAnswers.ContainsKey(questionIndex))
+            {
+                int selectedAnswerIndex = selectedAnswers[questionIndex];
+                int correctAnswerIndex = question.Value.correctIndex;
+
+                if (selectedAnswerIndex != correctAnswerIndex)
+                {
+                    selectedAnswers[questionIndex] = -1; // Set wrong answers to -1
+                }
+            }
+            questionIndex++;
+        }
+
+        // Debugging output to verify the results
+        foreach (var answer in selectedAnswers)
+        {
+            Debug.Log($"Question {answer.Key}: Selected Answer Index = {answer.Value}");
+        }
+    }
+
+
     public void SetPlayerWon()
     {
         playerWon = true;
+    }
+
+    public void KeypadAccessDenied()
+    {
+        ValidateAnswers();
+        currentQuestion = 0;
+        DisplayQuestionAndAnswers();
     }
 }
 
